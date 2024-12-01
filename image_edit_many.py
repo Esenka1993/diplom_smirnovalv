@@ -7,7 +7,7 @@ def process_single_image(filepath, outpath):
     try:
         image_1 = Image.open(filepath)
         image_1_1 = image_1.convert('L')
-        ch_im_1 = image_1.resize((900, 540))
+        ch_im_1 = image_1_1.resize((900, 540))
         ch_2 = ch_im_1.filter(ImageFilter.DETAIL)
         ch_2.save(outpath)
     except Exception as e:
@@ -35,10 +35,6 @@ if __name__ == "__main__":
     image_paths = [os.path.join(image_dir, f"image_{i}.jpg") for i in range(1, 11)]
     output_paths = [os.path.join(output_dir, f"output_{i}.png") for i in range(1, 11)]
 
-
-    for path in image_paths:
-        img = Image.new('RGB', (500, 500), color = 'grey')
-        img.save(path)
 
 
     # Базовое выполнение

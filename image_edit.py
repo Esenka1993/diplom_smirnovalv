@@ -8,7 +8,7 @@ def process_image_threaded(image_path, output_path):
     try:
         image_1 = Image.open(image_path)
         image_1_1 = image_1.convert('L')
-        ch_im_1 = image_1.resize((900, 540))
+        ch_im_1 = image_1_1.resize((900, 540))
         ch_2 = ch_im_1.filter(ImageFilter.DETAIL)
         ch_2.save(output_path)
     except Exception as e:
@@ -19,7 +19,7 @@ def process_image_multiprocessing(image_path, output_path):
     try:
         image_1 = Image.open(image_path)
         image_1_1 = image_1.convert('L')
-        ch_im_1 = image_1.resize((900, 540))
+        ch_im_1 = image_1_1.resize((900, 540))
         ch_2 = ch_im_1.filter(ImageFilter.DETAIL)
         ch_2.save(output_path)
     except Exception as e:
@@ -34,11 +34,9 @@ if __name__ == "__main__":
     # Обычное выполнение
     start_time = time.time()
     image_1 = Image.open(image_path)
-    print(image_1.format, image_1.size, image_1.mode)
     image_1_1 = image_1.convert('L')
-    ch_im_1 = image_1.resize((900, 540))
+    ch_im_1 = image_1_1.resize((900, 540))
     ch_2 = ch_im_1.filter(ImageFilter.DETAIL)
-    print(ch_2.getbands())
     ch_2.save('кот_обычное_изобр.png')
     end_time = time.time()
     print(f"Время выполнения обычным способом: {end_time - start_time:.2f} секунд")

@@ -12,7 +12,6 @@ def cpu_bound_task(n):
 
 def run_threaded(tasks):
     threads = []
-    #results = []
     for task in tasks:
         thread = threading.Thread(target=cpu_bound_task, args=(task,), daemon=True)
         threads.append(thread)
